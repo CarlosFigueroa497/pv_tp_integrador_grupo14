@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
+import { useFavoritos } from '../context/FavoritosContext';
 
 function ProductCard({ producto }) {
   const navigate = useNavigate();
+  const { favoritos, toggleFavorito } = useFavoritos();
 
-  const verDetalles = () => {
-    navigate(`/producto/${producto.id}`);
-  };
+  const esFavorito = favoritos.some(p => p.id === producto.id);
 
   return (
     <div style={{
@@ -22,7 +22,13 @@ function ProductCard({ producto }) {
       <h3>{producto.title}</h3>
       <p>💵 ${producto.price}</p>
       <p>{producto.category}</p>
-      <button onClick={verDetalles}>Ver más detalles</button>
+      <button onClick={() => navigate(`/producto/${producto.id}`)}>
+        Ver más detalles
+      </button>
+      <br />
+      <button onClick={() => toggleFavorito(producto)}>
+        {esFavorito ? '💔 Quitar de Favoritos' : '💖 Agregar a Favoritos'}
+      </button>
     </div>
   );
 }
