@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductCard from '../components/ProductCard';
+import { Link } from 'react-router-dom'; 
 
 function Home() {
   const [productos, setProductos] = useState([]);
@@ -14,11 +15,19 @@ function Home() {
   return (
     <div>
       <h2>Lista de productos</h2>
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '1rem'
-      }}>
+
+      
+      <Link to="/crear">
+        <button style={{ marginBottom: '1rem' }}>➕ Crear nuevo producto</button>
+      </Link>
+
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}
+      >
         {productos.map(producto => (
           <ProductCard key={producto.id} producto={producto} />
         ))}
