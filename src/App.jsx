@@ -10,6 +10,7 @@ import EditarProducto from './pages/EditarProducto';
 
 function App() {
   return (
+    
     <BrowserRouter>
       <Routes>
         <Route path="/producto/:id/editar" element={<EditarProducto />} />

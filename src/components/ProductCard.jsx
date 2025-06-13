@@ -3,33 +3,33 @@ import { useFavoritos } from '../context/FavoritosContext';
 
 function ProductCard({ producto }) {
   const navigate = useNavigate();
-  const { favoritos, toggleFavorito } = useFavoritos();
+  const { favoritos, toggleFavorito, eliminarProducto, productosCreados } = useFavoritos();
 
   const esFavorito = favoritos.some(p => p.id === producto.id);
+  const fueCreado = productosCreados.some(p => p.id === producto.id);
 
   return (
-    <div style={{
-      border: '1px solid #ccc',
-      padding: '1rem',
-      borderRadius: '8px',
-      width: '200px'
-    }}>
-      <img
-        src={producto.image}
-        alt={producto.title}
-        style={{ width: '100px', height: '100px', objectFit: 'contain' }}
-      />
-      <h3>{producto.title}</h3>
-      <p>💵 ${producto.price}</p>
-      <p>{producto.category}</p>
-      <button onClick={() => navigate(`/producto/${producto.id}`)}>
-        Ver más detalles
+    <div className="card" style={{ width: '18rem' }}>
+  <img src={producto.image} className="card-img-top" alt={producto.title} />
+  <div className="card-body">
+    <h5 className="card-title">{producto.title}</h5>
+    <p className="card-text">${producto.price}</p>
+    <p className="card-text">{producto.category}</p>
+    <button onClick={() => navigate(`/producto/${producto.id}`)} className="btn btn-primary mb-2">
+      Ver más detalles
+    </button>
+    <button onClick={() => toggleFavorito(producto)} className="btn btn-outline-danger">
+      {esFavorito ? '💔 Quitar de Favoritos' : '💖 Agregar a Favoritos'}
+    </button>
+
+    {fueCreado && (
+      <button onClick={() => eliminarProducto(producto.id)} className="btn btn-danger mt-2">
+        🗑️ Eliminar producto
       </button>
-      <br />
-      <button onClick={() => toggleFavorito(producto)}>
-        {esFavorito ? '💔 Quitar de Favoritos' : '💖 Agregar a Favoritos'}
-      </button>
-    </div>
+    )}
+  </div>
+</div>
+
   );
 }
 
