@@ -26,49 +26,28 @@ function ProductForm({ productoInicial = null, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: 'auto' }}>
-      <h2>{productoInicial ? 'Editar' : 'Crear'} Producto</h2>
-      <input
-        type="text"
-        name="title"
-        placeholder="Nombre"
-        value={producto.title}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="number"
-        name="price"
-        placeholder="Precio"
-        value={producto.price}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="text"
-        name="category"
-        placeholder="Categoría"
-        value={producto.category}
-        onChange={handleChange}
-        required
-      />
-      <textarea
-        name="description"
-        placeholder="Descripción"
-        value={producto.description}
-        onChange={handleChange}
-        required
-      ></textarea>
-      <input
-        type="text"
-        name="image"
-        placeholder="URL de imagen"
-        value={producto.image}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">{productoInicial ? 'Guardar Cambios' : 'Crear Producto'}</button>
-    </form>
+   <form onSubmit={handleSubmit} className="bg-secondary text-light p-4 rounded">
+  <h2 className="mb-3">{productoInicial ? 'Editar' : 'Crear'} Producto</h2>
+  <div className="mb-3">
+    <input type="text" name="title" className="form-control" placeholder="Nombre" value={producto.title} onChange={handleChange} required />
+  </div>
+  <div className="mb-3">
+    <input type="number" name="price" className="form-control" placeholder="Precio" value={producto.price} onChange={handleChange} required />
+  </div>
+  <div className="mb-3">
+    <input type="text" name="category" className="form-control" placeholder="Categoría" value={producto.category} onChange={handleChange} required />
+  </div>
+  <div className="mb-3">
+    <textarea name="description" className="form-control" placeholder="Descripción" value={producto.description} onChange={handleChange} required />
+  </div>
+  <div className="mb-3">
+    <input type="text" name="image" className="form-control" placeholder="URL de imagen" value={producto.image} onChange={handleChange} required />
+  </div>
+  <button type="submit" className="btn btn-success">
+    {productoInicial ? 'Guardar Cambios' : 'Crear Producto'}
+  </button>
+</form>
+
   );
 }
 
