@@ -69,3 +69,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.product-img {
+  transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+  transform: scale(1.05);
+}
