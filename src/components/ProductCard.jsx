@@ -9,41 +9,42 @@ function ProductCard({ producto }) {
   const fueCreado = productosCreados.some(p => p.id === producto.id);
 
 return (
-  <div className="card h-100 d-flex flex-column justify-content-between shadow-sm" style={{ minHeight: '100%', maxHeight: '100%', overflow: 'hidden' }}>
-    <img
-      src={producto.image}
-      className="card-img-top"
-      alt={producto.title}
-      style={{ objectFit: 'contain', height: '200px' }}
-    />
-    <div className="card-body d-flex flex-column">
-      <h5 className="card-title text-truncate">{producto.title}</h5>
-      <p className="card-text">${producto.price}</p>
-      <p className="card-text text-muted">{producto.category}</p>
-      <div className="mt-auto">
+<div className="card h-100 shadow-sm border-0" style={{ borderRadius: '12px' }}>
+  <img
+    src={producto.image}
+    className="card-img-top"
+    alt={producto.title}
+    style={{ objectFit: 'contain', height: '200px', padding: '1rem' }}
+  />
+  <div className="card-body d-flex flex-column">
+    <h5 className="card-title text-truncate">{producto.title}</h5>
+    <p className="card-text fw-semibold text-success">${producto.price}</p>
+    <p className="card-text text-muted">{producto.category}</p>
+    <div className="mt-auto d-grid gap-2">
+      <button
+        onClick={() => navigate(`/producto/${producto.id}`)}
+        className="btn btn-primary btn-sm"
+      >
+        Ver más detalles
+      </button>
+      <button
+        onClick={() => toggleFavorito(producto)}
+        className={`btn btn-sm ${esFavorito ? 'btn-outline-danger' : 'btn-outline-success'}`}
+      >
+        {esFavorito ? '💔 Quitar de Favoritos' : '💖 Agregar a Favoritos'}
+      </button>
+      {fueCreado && (
         <button
-          onClick={() => navigate(`/producto/${producto.id}`)}
-          className="btn btn-outline-primary btn-sm w-100 mb-2"
+          onClick={() => eliminarProducto(producto.id)}
+          className="btn btn-danger btn-sm"
         >
-          Ver más detalles
+          🗑️ Eliminar producto
         </button>
-        <button
-          onClick={() => toggleFavorito(producto)}
-          className="btn btn-outline-danger btn-sm w-100"
-        >
-          {esFavorito ? '💔 Quitar de Favoritos' : '💖 Agregar a Favoritos'}
-        </button>
-        {fueCreado && (
-          <button
-            onClick={() => eliminarProducto(producto.id)}
-            className="btn btn-danger btn-sm w-100 mt-2"
-          >
-            🗑️ Eliminar producto
-          </button>
-        )}
-      </div>
+      )}
     </div>
   </div>
+</div>
+
 );
 
 }
