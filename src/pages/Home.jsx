@@ -8,9 +8,7 @@ function Home() {
   return (
     <div className="container mt-4">
       <h2 className="mb-4">Lista de productos</h2>
-      <Link to="/crear">
-        <button className="btn btn-success mb-3">➕ Crear nuevo producto</button>
-      </Link>
+ 
       <div className="row">
         {productos.map((producto) => (
           <div className="col-md-4 mb-4" key={producto.id}>
