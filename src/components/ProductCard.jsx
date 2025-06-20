@@ -20,7 +20,7 @@ function ProductCard({ producto }) {
       </div>
       <div className="card-body d-flex flex-column">
         <h5 className="card-title text-truncate">{producto.title}</h5>
-        <p className="card-text fw-semibold text-success">${producto.price.toFixed(2)}</p>
+        <p className="card-text fw-semibold text-success">{isNaN(producto.price) ? 'Precio inválido' : `$${Number(producto.price).toFixed(2)}`}</p> 
         <p className="card-text text-muted">{producto.category}</p>
         <div className="mt-auto d-grid gap-2">
           <button
