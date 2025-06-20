@@ -15,10 +15,15 @@ function ProductForm({ productoInicial = null, onSubmit }) {
     }
   }, [productoInicial]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProducto({ ...producto, [name]: value });
-  };
+const handleChange = (e) => {
+  const { name, value } = e.target;
+
+  setProducto({
+    ...producto,
+    [name]: name === 'price' ? parseFloat(value) : value,
+  });
+};
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

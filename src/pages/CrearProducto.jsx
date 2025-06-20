@@ -1,14 +1,14 @@
 import ProductForm from '../components/ProductForm';
-import { useFavoritos } from '../context/FavoritosContext';
+import { useProductos } from '../context/ProductosContext'; 
 import { useNavigate } from 'react-router-dom';
 
 function CrearProducto() {
-  const { agregarProducto } = useFavoritos();
+  const { agregarProducto } = useProductos(); 
   const navigate = useNavigate();
 
   const handleCrear = (nuevoProducto) => {
-    agregarProducto(nuevoProducto);
-    navigate('/'); 
+    agregarProducto(nuevoProducto); // agrega a la lista global
+    navigate('/');
   };
 
   return <ProductForm onSubmit={handleCrear} />;
