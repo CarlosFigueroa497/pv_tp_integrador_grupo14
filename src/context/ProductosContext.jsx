@@ -17,7 +17,7 @@ export function ProductosProvider({ children }) {
       .catch(err => console.error('Error al cargar productos:', err));
   }, []);
 
-  // Agregaun nuevo producto a la lista local
+  // Agrega un nuevo producto a la lista local
   const agregarProducto = (producto) => {
     const nuevoProducto = {
       ...producto,
@@ -26,8 +26,23 @@ export function ProductosProvider({ children }) {
     setProductos([...productos, nuevoProducto]);
   };
 
+  // 🔧 NUEVA FUNCION: Actualiza un producto creado localmente
+  const actualizarProducto = (productoEditado) => {
+    setProductos((prevProductos) =>
+      prevProductos.map((p) =>
+        p.id === productoEditado.id ? productoEditado : p
+      )
+    );
+  };
+
   return (
-    <ProductosContext.Provider value={{ productos, agregarProducto }}>
+    <ProductosContext.Provider
+      value={{
+        productos,
+        agregarProducto,
+        actualizarProducto, // ⬅️ IMPORTANTE: exponerla
+      }}
+    >
       {children}
     </ProductosContext.Provider>
   );
