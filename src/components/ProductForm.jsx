@@ -59,16 +59,20 @@ function ProductForm({ productoInicial = null, onSubmit }) {
           </div>
 
           <div className="mb-3">
-            <input
-              type="text"
-              name="category"
-              className="form-control"
-              placeholder="Categoría"
-              value={producto.category}
-              onChange={handleChange}
-              required
-            />
-          </div>
+  <select
+    name="category"
+    className="form-select"
+    value={producto.category}
+    onChange={handleChange}
+    required
+  >
+    <option value="">Seleccione una categoría</option>
+    <option value="electronics">Electrónica</option>
+    <option value="jewelery">Joyería</option>
+    <option value="men's clothing">Ropa de hombre</option>
+    <option value="women's clothing">Ropa de mujer</option>
+  </select>
+</div>
 
           <div className="mb-3">
             <textarea
