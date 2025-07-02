@@ -11,6 +11,9 @@ import EditarProducto from './pages/EditarProducto';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'react-toastify/dist/ReactToastify.css';
+import Login from './pages/Login';
+import Registro from './pages/Registro';
+import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
@@ -19,12 +22,41 @@ function App() {
         <Header />
         <div className="flex-grow-1">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/favoritos" element={<Favoritos />} />
-            <Route path="/producto/:id" element={<DetalleProducto />} />
-            <Route path="/producto/:id/editar" element={<EditarProducto />} />
-            <Route path="/crear" element={<CrearProducto />} />
-          </Routes>
+  {/* Rutas públicas */}
+  <Route path="/login" element={<Login />} />
+  <Route path="/registro" element={<Registro />} />
+
+  {/* Rutas privadas */}
+<Route path="/" element={
+    <PrivateRoute>
+      <Home />
+    </PrivateRoute>
+  } />
+
+  <Route path="/favoritos" element={
+    <PrivateRoute>
+      <Favoritos />
+    </PrivateRoute>
+  } />
+
+  <Route path="/producto/:id" element={
+    <PrivateRoute>
+      <DetalleProducto />
+    </PrivateRoute>
+  } />
+
+  <Route path="/producto/:id/editar" element={
+    <PrivateRoute>
+      <EditarProducto />
+    </PrivateRoute>
+  } />
+
+  <Route path="/crear" element={
+    <PrivateRoute>
+      <CrearProducto />
+    </PrivateRoute>
+  } />
+</Routes>
         </div>
         <Footer />
       </BrowserRouter>
