@@ -58,3 +58,28 @@
   background-color: blue;
   color: red;
 }
+
+
+/* Estilos para el título de la tienda en el Header */
+.navbar-brand .brand-text {
+  font-size: 1.8rem; /*para pantallas grandes */
+}
+
+/* Media query para pantallas pequeñas (menos de 768px de ancho) */
+@media (max-width: 767.98px) { 
+  .navbar-brand .brand-text {
+    font-size: 1.5rem; /* Tamaño más pequeño en móviles */
+  }
+}
+
+/* ajustar el tamaño del icono de la bolsa */
+.navbar-brand .brand-icon {
+  font-size: 1.8rem; /* Tamaño para pantallas grandes */
+}
+
+@media (max-width: 767.98px) {
+  .navbar-brand .brand-icon {
+    font-size: 1.5rem; /* Tamaño más pequeño en móviles */
+    margin-right: 0.3rem !important; /* Ajusta el margen si es necesario */
+  }
+}

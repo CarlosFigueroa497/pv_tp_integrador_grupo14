@@ -10,35 +10,40 @@ function Header() {
     navigate('/login');
   };
 
-  return (
-    <nav className="navbar px-4 py-3" style={{ backgroundColor: 'black' }}>
+return (
+  <nav className="navbar px-4 py-3" style={{ backgroundColor: 'black' }}>
+    <div className="container-fluid d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
       <Link to="/" className="navbar-brand d-flex align-items-center">
-        <span style={{ fontSize: '1.8rem', marginRight: '0.5rem' }}>🛍️</span>
-        <span style={{ fontSize: '1.8rem', fontFamily: 'Georgia, serif', color: 'white' }}>
-          Tienda Grupo N°14 🛒
-        </span>
-      </Link>
+  {/* agregue la clase 'brand-icon' para controlar el tamaño del ícono */}
+  <span className="brand-icon" style={{ marginRight: '0.5rem' }}>🛍️</span>
+  {/* Agrgue la clase 'brand-text' para controlar el tamaño del texto del título */}
+  <span className="brand-text" style={{ fontFamily: 'Georgia, serif', color: 'white' }}>
+    Tienda Grupo N°14 🛒
+  </span>
+ </Link>
 
-      <div className="d-flex align-items-center">
-        <Link to="/favoritos" className="btn btn-outline-light me-2">
+      <div className="d-flex flex-wrap align-items-center justify-content-center gap-2">
+        <Link to="/favoritos" className="btn btn-outline-light">
           Favoritos
         </Link>
 
-        <Link to="/crear" className="btn btn-outline-success me-3">
+        <Link to="/crear" className="btn btn-outline-success">
           Crear Producto
         </Link>
 
         {user && (
           <>
-            <span className="text-light me-3">Bienvenido, {user.email}</span>
+            <span className="text-light">Bienvenido, {user.email}</span>
             <button className="btn btn-danger btn-sm" onClick={handleLogout}>
               Cerrar sesión
             </button>
           </>
         )}
       </div>
-    </nav>
-  );
+    </div>
+  </nav>
+);
+
 }
 
 export default Header;
