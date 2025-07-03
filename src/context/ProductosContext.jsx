@@ -26,7 +26,7 @@ export function ProductosProvider({ children }) {
     setProductos([...productos, nuevoProducto]);
   };
 
-  // 🔧 NUEVA FUNCION: Actualiza un producto creado localmente
+  // NUEVA FUNCION: Actualiza un producto creado localmente
   const actualizarProducto = (productoEditado) => {
     setProductos((prevProductos) =>
       prevProductos.map((p) =>
@@ -40,7 +40,7 @@ export function ProductosProvider({ children }) {
       value={{
         productos,
         agregarProducto,
-        actualizarProducto, // ⬅️ IMPORTANTE: exponerla
+        actualizarProducto, // IMPORTANTE: exponerla
       }}
     >
       {children}

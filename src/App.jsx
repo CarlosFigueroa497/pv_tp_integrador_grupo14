@@ -61,7 +61,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     <ToastContainer
-  style={{ zIndex: 9999, backgroundColor: '#222', color: 'white' }} // << Aca va
+  style={{ zIndex: 9999, backgroundColor: '#222', color: 'white' }}
   position="top-right"
   autoClose={3000}
   hideProgressBar={false}

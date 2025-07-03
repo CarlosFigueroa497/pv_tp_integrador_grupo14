@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useFavoritos } from '../context/FavoritosContext';
-import { FaHeart, FaRegHeart } from 'react-icons/fa'; // íconos de favorito
+import { FaHeart, FaRegHeart } from 'react-icons/fa'; // ícono de favorito
 
 function ProductCard({ producto }) {
   const navigate = useNavigate();
